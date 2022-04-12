@@ -137,7 +137,7 @@ functions:
     runtime: spring
     description: compiles and tests the application
     run:
-      - locate mvn
+      - echo $PATH
       - mvn package -DskipTests=true
       - mvn test
       - mkdir target/lib
