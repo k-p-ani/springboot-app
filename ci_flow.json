@@ -1,0 +1,181 @@
+{
+   "Name": "new-spring-app",
+   "Description": "build, package, sign and publish a Spring-Boot Application",
+   "labels": {},
+   "git_uri": "https://gitlab.com/sushil007pal/springboot-app.git",
+   "app_icon": "spring",
+   "steps": [
+      {
+         "name": "build-app",
+         "description": "compile and test the java app",
+         "runtime": "quay.io/artisan/spring",
+         "function": "build-app",
+         "input": {
+            "var": [
+               {
+                  "name": "PROJECT_ARTIFACT_ID",
+                  "description": "the maven artifact id for the application",
+                  "required": true,
+                  "type": "string",
+                  "value": "flow-test"
+               },
+               {
+                  "name": "PROJECT_ARTIFACT_VERSION",
+                  "description": "the version of the application artifact",
+                  "required": true,
+                  "type": "string",
+                  "value": "0.0.1",
+                  "default": "0.0.1"
+               }
+            ]
+         },
+         "privileged": false
+      },
+      {
+         "name": "package-app",
+         "description": "package and signs the app and publish it",
+         "runtime": "quay.io/artisan/spring",
+         "function": "publish-app",
+         "input": {
+            "key": [
+               {
+                  "Name": "SIGNING_KEY",
+                  "Description": "the private PGP key required to digitally sign the application package",
+                  "Private": true,
+                  "value": "-----BEGIN PGP PRIVATE KEY BLOCK-----\nVersion: golang.org/x/crypto/openpgp - artisan-0.0.4-050821151730979-a187215ee8-beta\nComment: Cipher: AES128, Hash: SHA-256, RSA Bits: 2048, Created: 2021-08-06 13:29:59.016105 +0100 BST m=+0.343859505\nHash: AES128/SHA-256\n\n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\nhKc2b+o6Z6yS\n=S+M3\n-----END PGP PRIVATE KEY BLOCK-----",
+                  "path": "/"
+               }
+            ],
+            "secret": [
+               {
+                  "name": "ART_REG_USER",
+                  "description": "the artisan registry user name which is deployed into the openshift",
+                  "value": "admin"
+               },
+               {
+                  "name": "ART_REG_PWD",
+                  "description": "the artisan registry password which is deployed into the openshift",
+                  "value": "wwq3Q2sfeNMi0CWa"
+               }
+            ],
+            "var": [
+               {
+                  "name": "APP_PACKAGE_NAME",
+                  "description": "the name:tag for the application package to be published (e.g. registry-host/app-group/app-name)\nthis package contains application artfacts, dockerfile \u0026 build.yaml file. it's used by image builder to build the application img",
+                  "required": true,
+                  "type": "name",
+                  "value": "artisan.cmsee.stack/aps/new-spring-app"
+               }
+            ]
+         },
+         "privileged": false
+      },
+      {
+         "name": "build-image",
+         "description": "build and publish container image",
+         "runtime": "quay.io/artisan/buildah",
+         "function": "build-image",
+         "input": {
+            "key": [
+               {
+                  "Name": "VERIFICATION_KEY",
+                  "Description": "the public PGP key required to open the application package",
+                  "Private": false,
+                  "value": "-----BEGIN PGP PUBLIC KEY BLOCK-----\nVersion: golang.org/x/crypto/openpgp - artisan-0.0.4-050821151730979-a187215ee8-beta\nComment: Cipher: AES128, Hash: SHA-256, RSA Bits: 2048, Created: 2021-08-06 13:29:59.012305 +0100 BST m=+0.340059891\nHash: AES128/SHA-256\n\nxsBNBGENK0YBCACzT3Pw17t2UuS6l/rjK96frPfQixSFooHRqDGGHjanWEHweMJ8\nC74c6WcfMeuYaILxwFha+GelD+gOchCayTcLegsRI6QU7p4BrFcmQ+zbMBka+hmd\nrmSg/IJ/dcAehHeQR20fjKypVD5ZrwQLpN4mQQE9nLo46ANdaJK4CK0gCFkeOVqE\n3QHw7xTc1FxIClHGIPB3l0N4rrNItuWPKb9mY0YnBbYNxyas2ojBqQQqvPw3UADF\nNGPIMIlpPuxOkIrKJIahADwGfio9o9p2AJUxeafuDHpzqOBhwhVcoewQVSDdgnzh\n4IUm6op7Tj4nvq6yv3mXgYpmSHgS67q7wDpJABEBAAHNRGFwcy5yZWdpc3RyeSAo\na2V5cyBmb3IgQVBTIHBhY2thZ2UgcmVnaXN0cnkpIDxhcHMucmVnaXN0cnlAYXRv\ncy5uZXQ+wsBiBBMBCAAWBQJhDStGCRBHYzIndxercwIbAwIZAQAAM48IAEpFJU6P\nUPak+j9srpGbICPXNnnPtpeMRxJ7wKjqm3CSHh7vuH5J6N0SS1nxNw7DNrvUhbBu\nK2Y+VwFQ6zMCp2W1MsoF61FpImgHgGQZm/KPcsv79/zXGwwwTVnE9cNElIlK/KBU\njrNHweg192+UCVKyQjjN4WC8T2yJ8W9ZyPtbB8qDJRzr1wxJkvgLi4whI2U3wqYI\n7gVm6ASJYTdZR4WeQYd3QbSRfjGT9ob+QVsZ8De2OB9O+rc00F4mNmsOYenJOOsl\nzErEnEgsg0Ps230b/ngbcIfwzHaRDY+D1IL6F9UDrzVq96gVryqRZP28FDT+ngan\n/8VP3V9kxh1DEI/OwE0EYQ0rRgEIALIStT4DfG4trucN+QA46fwiC6DGBUzE7RR+\n0cPsEUoqr7IJ83eHs05cO6S7X4KGpWEzOALlSPAfxTXpImfxWW0kSOgbkCtWQ4Mv\n4TvtaWYy7AXto82Is4181C/w1S++G8QN45Tj9HikvpL6APu8GvRmkzWHGwKJv7lc\nG7/+rgQqu/7FmE65B4oHnneeT6Jz3WURaPdudr7rDzjQl2Z1bOiuaZIM5AK7ioaf\n3LlLnPku77x0CNFaBGWzOg9HKUMQl5C494NmbJTlJAblunvGt9NEnWJ3dBhQ2wDs\nwVfDm+TTzHkZSlxjqKDcG33X57dKtQq3m2MvASZEE/B93Gqt+LEAEQEAAcLAXwQY\nAQgAEwUCYQ0rRgkQR2MyJ3cXq3MCGwwAAJIXCABiUEQuBBUzMbPBXHygZV82hnLJ\nA+XU1XzyXFCFHnraeli2RkDhxOT6gE+FAlZzKEOCYUFHpFuwP2f257kBdHdRZP5R\n46DqlZPocKlaish0mHkXa+WrNrTO5PyIveVTIzANK77CtTJkTrcm1gpDg8i26mDA\nTGwZ267FX92KdtfFJakodbM2Q2wCrtJl4tiJ2Yzy5fr9Arz1p3ycmDZh8gg3l7Z3\nCw9ZoJQXDWkQ0urQ8EnC0Rz3rDRvTa6X+u+IgrnPt1lVUhYL7BKOfe+C+1o/6u7S\n8GFKd/PxwHquTdpSJDzU401mBaWFcmp5iY9PF0+yACQS3Gp4hKc2b+o6Z6yS\n=Dczo\n-----END PGP PUBLIC KEY BLOCK-----",
+                  "path": "/"
+               }
+            ],
+            "secret": [
+               {
+                  "name": "PULL_IMAGE_REGISTRY_UNAME",
+                  "description": "user name for the container registry where the base image is located",
+                  "value": "anikp"
+               },
+               {
+                  "name": "PULL_IMAGE_REGISTRY_PWD",
+                  "description": "password for the container registry where the base image is located",
+                  "value": "MohitAni$28"
+               },
+               {
+                  "name": "PUSH_IMAGE_REGISTRY_UNAME",
+                  "description": "user name for the container registry where the application image will be pushed",
+                  "value": "admin"
+               },
+               {
+                  "name": "PUSH_IMAGE_REGISTRY_PWD",
+                  "description": "password for the container registry where the application image will be pushed",
+                  "value": "wwq3Q2sfeNMi0CWa"
+               },
+               {
+                  "name": "REGISTRY_USER",
+                  "description": "artefact registry user name where artefact will be pushed",
+                  "value": "admin"
+               },
+               {
+                  "name": "REGISTRY_PWD",
+                  "description": "artefact registry password where artefact will be pushed",
+                  "value": "wwq3Q2sfeNMi0CWa"
+               }
+            ],
+            "var": [
+               {
+                  "name": "APPLICATION_NAME",
+                  "description": "the application name to create openshift tekton pipeline resources eg. EventListner \u0026 PipelineResources",
+                  "required": true,
+                  "type": "string",
+                  "value": "new-spring-app"
+               },
+               {
+                  "name": "PUSH_IMAGE_REGISTRY",
+                  "description": "the image registry name (eg. quay.io)\nit's use to push application image into the image registry",
+                  "required": true,
+                  "type": "string",
+                  "value": "docker.cmsee.stack"
+               },
+               {
+                  "name": "PUSH_IMAGE_REPO",
+                  "description": "the image repo name\nrepo name of the image registry where image to be pushed. if repo is created under user then it will be username\nif it's created inside the specific group then it would be a group name",
+                  "required": true,
+                  "type": "string"
+               },
+               {
+                  "name": "PUSH_IMAGE_NAME",
+                  "description": "the application image name. it's a final image name that will be pushed into the img registry\nwe can pass any name (eg. java-app)",
+                  "required": true,
+                  "type": "string",
+                  "value": "springboot-app"
+               },
+               {
+                  "name": "PUSH_IMAGE_VERSION",
+                  "description": "the application image version/tag. it's a docker image tag used to identify the img uniquely",
+                  "required": true,
+                  "type": "string",
+                  "value": "v.0.0.1"
+               },
+               {
+                  "name": "PULL_IMAGE_REGISTRY",
+                  "description": "application runtime image registry name (eg. quay.io)\nthis is the name of the image registry where base docker image is stored. it can be redhat, gitlab or quay registry",
+                  "required": true,
+                  "type": "string",
+                  "value": "registry.redhat.io"
+               },
+               {
+                  "name": "CRYPTO_KEY_EMAIL",
+                  "description": "the email id which is used to generate crypto signature keys by using art cli\nthis email id is used by img builder to sign the application image",
+                  "required": true,
+                  "type": "string",
+                  "value": "ani.p@atos.net"
+               },
+               {
+                  "name": "APP_PACKAGE_NAME",
+                  "description": "the name:tag for the application package to be published (e.g. registry-host/app-group/app-name)\nthis package contains application artfacts, dockerfile \u0026 build.yaml file. it's used by image builder to build the application img",
+                  "required": true,
+                  "type": "name",
+                  "value": "artisan.cmsee.stack/aps/new-spring-app"
+               }
+            ]
+         },
+         "privileged": true
+      }
+   ]
+}
