@@ -138,8 +138,8 @@ functions:
     description: compiles and tests the application
     run:
       - bash -c 'echo $PATH'
-      - mvn package -DskipTests=true
-      - mvn test
+      - mvn -X package -DskipTests=true
+      - mvn -X test
       - mkdir target/lib
       - mkdir target/target
         #- cp build/libs/${PROJECT_ARTIFACT_ID}-${PROJECT_ARTIFACT_VERSION}-SNAPSHOT.jar build/build
