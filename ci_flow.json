@@ -2,7 +2,7 @@
    "Name": "new-spring-app",
    "Description": "build, package, sign and publish a Spring-Boot Application",
    "labels": {},
-   "git_uri": "https://gitlab.com/sushil007pal/springboot-app.git",
+   "git_uri": "https://github.com/k-p-ani/springboot-app.git",
    "app_icon": "spring",
    "steps": [
       {
