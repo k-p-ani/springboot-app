@@ -62,13 +62,13 @@ input:
         application runtime image registry name (eg. quay.io)
         this is the name of the image registry where base docker image is stored. it can be redhat, gitlab or quay registry
 
-    - name: PACKAGE_NAME
-      required: true
-      type: string
-      description: |-
-        the name:tag for the spring recepie package to download (e.g. registry-host/app-group/package-name)
-        it contains setup & pipeline flow alongwith build.yaml file
-        this package should be already available in the artefact registry like nexus
+#    - name: PACKAGE_NAME
+#      required: true
+#      type: string
+#      description: |-
+#        the name:tag for the spring recepie package to download (e.g. registry-host/app-group/package-name)
+#        it contains setup & pipeline flow alongwith build.yaml file
+#        this package should be already available in the artefact registry like nexus
 
     - name: CRYPTO_KEY_EMAIL
       required: true
@@ -77,10 +77,10 @@ input:
         the email id which is used to generate crypto signature keys by using art cli
         this email id is used by img builder to sign the application image
 
-    - name: HOST_NAME
-      required: true
-      type: string
-      description: openshift or kubernetes cluster hostname required to deploy app & create an ingress
+#    - name: HOST_NAME
+#     required: true
+#      type: string
+#      description: openshift or kubernetes cluster hostname required to deploy app & create an ingress
 
   secret:
     - name: ART_REG_USER
@@ -128,7 +128,7 @@ profiles:
       # copy the below files to build the jvm version to the artefact(target) package folder
       # these files are required to build images & deploy the app
       - cp build-image.sh target/target/build-image.sh
-      - cp deploy.yaml.tem target/target/deploy.yaml.tem 
+#      - cp deploy.yaml.tem target/target/deploy.yaml.tem 
     target: target/target
 
 functions:
@@ -181,10 +181,10 @@ functions:
         - PUSH_IMAGE_NAME
         - PUSH_IMAGE_VERSION
         - PULL_IMAGE_REGISTRY
-        - PACKAGE_NAME
+#        - PACKAGE_NAME
         - CRYPTO_KEY_EMAIL
         - APP_PACKAGE_NAME
-        - HOST_NAME
+#        - HOST_NAME
       secret:
         - PULL_IMAGE_REGISTRY_UNAME
         - PULL_IMAGE_REGISTRY_PWD
