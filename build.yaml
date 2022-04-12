@@ -134,7 +134,7 @@ profiles:
 functions:
   # this function is used by CI pipeline
   - name: build-app
-    runtime: spring
+    runtime: java
     description: compiles and tests the application
     run:
       - bash -c 'echo $PATH'
