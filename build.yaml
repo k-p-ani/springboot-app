@@ -137,16 +137,10 @@ functions:
     runtime: java
     description: compiles and tests the application
     run:
-      - bash -c 'whoami'
-      - bash -c 'ls -la /workspace/'
-      - mkdir -p target/classes
-      - mvn -X package -DskipTests=true
-      - mvn -X test
-      - mkdir target/lib
-      - mkdir target/target
-        #- cp build/libs/${PROJECT_ARTIFACT_ID}-${PROJECT_ARTIFACT_VERSION}-SNAPSHOT.jar build/build
-      - cp target/${PROJECT_ARTIFACT_ID}-${PROJECT_ARTIFACT_VERSION}-SNAPSHOT.jar target/target
-      - cp -r target/lib/. target/target/lib
+      - art merge pom.xml.tem
+      - mvn package -DskipTests=true
+      - mvn test
+      - bash -c 'cp target/${PROJECT_ARTIFACT_ID}-${PROJECT_ARTIFACT_VERSION}-SNAPSHOT.jar target/target'
     input:
       var:
         - PROJECT_ARTIFACT_ID
