@@ -138,7 +138,7 @@ functions:
     description: compiles and tests the application
     run:
       - bash -c 'whoami'
-      - bash -c 'pwd'
+      - bash -c 'ls -la $(pwd)'
       - mkdir -p target/classes
       - mvn -X package -DskipTests=true
       - mvn -X test
