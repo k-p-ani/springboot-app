@@ -137,7 +137,7 @@ functions:
     runtime: java
     description: compiles and tests the application
     run:
-      - bash -c 'echo $PATH'
+      - bash -c 'whoami'
       - mkdir -p target/classes
       - mvn -X package -DskipTests=true
       - mvn -X test
