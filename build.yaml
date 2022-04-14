@@ -107,15 +107,15 @@ input:
     - name: REGISTRY_PWD
       description: artefact registry password where artefact will be pushed
 
-  key:
-    - name: SIGNING_KEY
-      description: the private PGP key required to digitally sign the application package
-      private: true
-      path: /
+#  key:
+#    - name: SIGNING_KEY
+#      description: the private PGP key required to digitally sign the application package
+#      private: true
+#      path: /
 
-    - name: VERIFICATION_KEY
-      description: the public PGP key required to open the application package
-      path: /
+#    - name: VERIFICATION_KEY
+#      description: the public PGP key required to open the application package
+#      path: /
 
 profiles:
   - name: app
@@ -159,9 +159,9 @@ functions:
       secret:
         - ART_REG_USER
         - ART_REG_PWD
-      key:
+#      key:
         # needs this binding to mount the key in the container
-        - SIGNING_KEY
+#        - SIGNING_KEY
 
   # this function is used by CI pipeline
   - name: build-image
@@ -192,6 +192,6 @@ functions:
         - PUSH_IMAGE_REGISTRY_PWD
         - REGISTRY_USER
         - REGISTRY_PWD
-      key:
-        - VERIFICATION_KEY
+#      key:
+#        - VERIFICATION_KEY
 ...
