@@ -140,6 +140,8 @@ functions:
       - art merge pom.xml.tem
       - mvn package -DskipTests=true
       - mvn test
+      - mkdir target/lib
+      - mkdir target/target      
       - bash -c 'cp target/${PROJECT_ARTIFACT_ID}-${PROJECT_ARTIFACT_VERSION}-SNAPSHOT.jar target/target'
     input:
       var:
