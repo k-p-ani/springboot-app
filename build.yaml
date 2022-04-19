@@ -153,9 +153,9 @@ functions:
     description: packages and publishes the application
     runtime: spring
     run:
-      - bash -c "echo --> `pwd`"
-      - bash -c "echo --> `whoami`"
-      - bash -c "echo --> `ls -al /home/runtime/.artisan1"
+      - bash -c 'echo --> `pwd`'
+      - bash -c 'echo --> `whoami`'
+      - bash -c 'echo --> `ls -al /home/runtime/.artisan`'
       - art build -t=${APP_PACKAGE_NAME} -p app
       - art push ${APP_PACKAGE_NAME} -u=${ART_REG_USER}:${ART_REG_PWD}
     input:
