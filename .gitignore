@@ -34,3 +34,4 @@ build/
 .env
 ci_flow.json
 .gitignore
+ci_flow.yaml
