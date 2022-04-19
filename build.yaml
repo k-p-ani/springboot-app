@@ -153,10 +153,8 @@ functions:
     description: packages and publishes the application
     runtime: spring
     run:
-      - bash -c 'ls -l'    
-      #- bash -c 'echo pwddd `pwd` && echo whoami `whoami` && echo pwddd `pwd`'    
-      #- bash -c 'echo pwddd `pwd`'
-      #- bash -c 'echo lsal `ls -al /home/runtime/.artisan`'
+      - bash -c 'whoami'
+      - bash -c 'ls -al /home/runtime/.artisan'
       - art build -t=${APP_PACKAGE_NAME} -p app
       - art push ${APP_PACKAGE_NAME} -u=${ART_REG_USER}:${ART_REG_PWD}
     input:
