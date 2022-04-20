@@ -154,9 +154,11 @@ functions:
     runtime: spring
     run:
       - bash -c 'whoami'
-      - bash -c 'ls -al /home/runtime/.artisan'
+      - ls -al /home/runtime/.artisan
+      - ls -al /home/runtime/.artisan/tmp
       - art build -t=${APP_PACKAGE_NAME} -p app
       - art push ${APP_PACKAGE_NAME} -u=${ART_REG_USER}:${ART_REG_PWD}
+      #- sleep 1000
     input:
       var:
         - APP_PACKAGE_NAME
