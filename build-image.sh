@@ -12,7 +12,10 @@ fi
 echo "...buildah login 4 pull ....."
 # login to pull image registry
 buildah login -u ${PULL_IMAGE_REGISTRY_UNAME} -p ${PULL_IMAGE_REGISTRY_PWD} ${PULL_IMAGE_REGISTRY}
-echo "...buildah bud ....."
+echo "...buildah bud ..... ${PUSH_IMAGE_REGISTRY}"
+echo "...buildah bud ..... ${PUSH_IMAGE_REPO}"
+echo "...buildah bud ..... ${PUSH_IMAGE_NAME}"
+echo "...buildah bud ..... ${PUSH_IMAGE_VERSION}"
 #build image
 buildah bud --format=docker --isolation=chroot -t ${PUSH_IMAGE_REGISTRY}/${PUSH_IMAGE_REPO}/${PUSH_IMAGE_NAME}:${PUSH_IMAGE_VERSION} .
 if [ $? -ne 0 ]; then
