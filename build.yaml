@@ -176,7 +176,7 @@ functions:
       # scaffolding is adding artefacts/targets in .dockerignore file. deleteing it to copy files into the docker images
       - rm -rf .dockerignore
       # download application package from the artefact repository
-      - echo `whoami`
+      - echo ${APP_PACKAGE_NAME}
       - art open -u=${ART_REG_USER}:${ART_REG_PWD} ${APP_PACKAGE_NAME} /workspace/source
       # build & sign the docker image & push into the img registry. also deploy the app 
       - sh build-image.sh
