@@ -35,3 +35,5 @@ build/
 ci_flow.json
 .gitignore
 ci_flow.yaml
+.env copy
+pom.xml

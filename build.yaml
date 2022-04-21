@@ -101,10 +101,10 @@ input:
     - name: PUSH_IMAGE_REGISTRY_PWD
       description: password for the container registry where the application image will be pushed
 
-    - name: REGISTRY_USER
+    - name: ART_REG_USER
       description: artefact registry user name where artefact will be pushed
 
-    - name: REGISTRY_PWD
+    - name: ART_REG_PWD
       description: artefact registry password where artefact will be pushed
 
 #  key:
@@ -177,7 +177,7 @@ functions:
       - rm -rf .dockerignore
       # download application package from the artefact repository
       - echo `whoami`
-      - art open -u=${REGISTRY_USER}:${REGISTRY_PWD} ${APP_PACKAGE_NAME} /workspace/source
+      - art open -u=${ART_REG_USER}:${ART_REG_PWD} ${APP_PACKAGE_NAME} /workspace/source
       # build & sign the docker image & push into the img registry. also deploy the app 
       - sh build-image.sh
     input:
@@ -197,8 +197,8 @@ functions:
         - PULL_IMAGE_REGISTRY_PWD
         - PUSH_IMAGE_REGISTRY_UNAME
         - PUSH_IMAGE_REGISTRY_PWD
-        - REGISTRY_USER
-        - REGISTRY_PWD
+        - ART_REG_USER
+        - ART_REG_PWD
 #      key:
 #        - VERIFICATION_KEY
 ...
