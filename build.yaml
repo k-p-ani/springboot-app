@@ -179,7 +179,7 @@ functions:
       # download application package from the artefact repository
       - echo "${APP_PACKAGE_NAME}"
       - echo world
-      - art open -u=${ART_REG_USER}:${ART_REG_PWD} ${APP_PACKAGE_NAME} /workspace/source
+      - art open -s -u ${ART_REG_USER}:${ART_REG_PWD} ${APP_PACKAGE_NAME} /workspace/source
       # build & sign the docker image & push into the img registry. also deploy the app 
       - sh build-image.sh
     input:
